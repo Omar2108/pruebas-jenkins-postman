@@ -1,0 +1,496 @@
+{
+	"info": {
+		"_postman_id": "9f6d7925-24d5-4884-988d-b7b7d1ffb072",
+		"name": "agenda",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20839487",
+		"_collection_link": "https://www.postman.com/universal-meteor-840960/workspace/pruebas/collection/20839487-9f6d7925-24d5-4884-988d-b7b7d1ffb072?action=share&source=collection_link&creator=20839487"
+	},
+	"item": [
+		{
+			"name": "LISTADO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"var schema = {\r",
+							"    \"items\": {\r",
+							"        \"type\": \"boolean\"\r",
+							"    }\r",
+							"};\r",
+							"\r",
+							"var data1 = [true, false];\r",
+							"var data2 = [true, 123];\r",
+							"\r",
+							"pm.test('Schema is valid', function () {\r",
+							"    pm.expect(tv4.validate(data1, schema)).to.be.true;\r",
+							"    pm.expect(tv4.validate(data2, schema)).to.be.false;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}:{{PORT}}/agenda/all",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"agenda",
+						"all"
+					]
+				},
+				"description": "se obtienen todos los registros"
+			},
+			"response": []
+		},
+		{
+			"name": "nuevo contacto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body(\"Saved\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"test para codigo de respuesta\", function () {\r",
+							"    var code = pm.variables.get(\"codeResponse\");\r",
+							"    pm.response.to.have.status(code);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201, 202]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombreCompleto\": \"{{nombre}}\",\r\n    \"telefono\": \"{{telefono}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"direccion\": \"{{direccion}}\",\r\n    \"tipoRelacion\": \"{{tipoRelacion}}\",\r\n    \"relacion\": \"{{relacion}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}:{{PORT}}/agenda/add",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"agenda",
+						"add"
+					]
+				},
+				"description": "se crea un nuevo recurso en el servidor"
+			},
+			"response": []
+		},
+		{
+			"name": "borrado fisico",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}:{{PORT}}/agenda/contacto/1",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"agenda",
+						"contacto",
+						"1"
+					]
+				},
+				"description": "elimina un recurso en el servidor"
+			},
+			"response": []
+		},
+		{
+			"name": "modificar contacto",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{host}}:{{PORT}}/agenda/contacto/1",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"agenda",
+						"contacto",
+						"1"
+					]
+				},
+				"description": "actualiza un recurso en el servidor por su id"
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar nombre de contacto",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombreCompleto",
+							"value": "Pedro Ramirez",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}:{{PORT}}/agenda/contacto/nombre/2",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"agenda",
+						"contacto",
+						"nombre",
+						"2"
+					]
+				},
+				"description": "actualiza el nombre del recurso en el servidor por su id"
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar telefono de contacto",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "telefono",
+							"value": "3221546987",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}:{{PORT}}/agenda/contacto/telefono/2",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"agenda",
+						"contacto",
+						"telefono",
+						"2"
+					]
+				},
+				"description": "actualiza el telefono del recurso en el servidor por su id"
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar email de contacto",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "pedro.remariez@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:{{PORT}}/agenda/contacto/email/2",
+					"host": [
+						"localhost"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"agenda",
+						"contacto",
+						"email",
+						"2"
+					]
+				},
+				"description": "actualiza el nombre del recurso en el servidor por su id"
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar tipo relacion",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "tipoRelacion",
+							"value": "Familiar",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}:{{PORT}}/agenda/contacto/tipoRelacion/2",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"agenda",
+						"contacto",
+						"tipoRelacion",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar direccion",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "direccion",
+							"value": "cra 4 - 125",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}:{{PORT}}/agenda/contacto/direccion/2",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"agenda",
+						"contacto",
+						"direccion",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar relacion",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "relacion",
+							"value": "esposa",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}:{{PORT}}/agenda/contacto/relacion/2",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"agenda",
+						"contacto",
+						"relacion",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "borrado logico",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombreCompleto",
+							"value": "Pedro Ramirez",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:{{PORT}}/agenda/contacto/borrar/2",
+					"host": [
+						"localhost"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"agenda",
+						"contacto",
+						"borrar",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get contacto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"test comprobar el nombre del usuario\", function () {\r",
+							"\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.nombreCompleto).to.eql(\"Omar Rodriguez\");\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"test comprobar si la respuesta es null\", function () {\r",
+							"\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.eql(null);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}:{{PORT}}/agenda/find/5",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"agenda",
+						"find",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "PORT",
+			"value": "9090",
+			"type": "string"
+		}
+	]
+}

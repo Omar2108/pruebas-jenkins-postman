@@ -1,0 +1,61 @@
+{
+	"info": {
+		"_postman_id": "1152fde6-3260-4121-854d-1b5266f6ba43",
+		"name": "pruebas-crear-contacto-api-agenda",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20839487",
+		"_collection_link": "https://www.postman.com/universal-meteor-840960/workspace/pruebas/collection/20839487-1152fde6-3260-4121-854d-1b5266f6ba43?action=share&source=collection_link&creator=20839487"
+	},
+	"item": [
+		{
+			"name": "create-contacto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body(\"Saved\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"test para codigo de respuesta\", function () {\r",
+							"    var code = pm.variables.get(\"codeResponse\");\r",
+							"    pm.response.to.have.status(code);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201, 202]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombreCompleto\": \"{{nombre}}\",\r\n    \"telefono\": \"{{telefono}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"direccion\": \"{{direccion}}\",\r\n    \"tipoRelacion\": \"{{tipoRelacion}}\",\r\n    \"relacion\": \"{{relacion}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}:{{port}}/agenda/add",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"agenda",
+						"add"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

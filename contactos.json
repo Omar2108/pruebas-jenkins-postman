@@ -1,0 +1,38 @@
+[
+{
+    "nombre": "Omar Rodriguez",
+    "telefono": "3002779816",
+    "email": "omar.rchamorro21@gmail.com",
+    "direccion": "cra 4 cll 4 -125",
+    "tipoRelacion": "Familiar",
+    "relacion": "Hermano",
+    "codeResponse": 200
+},
+{
+    "nombre": "Maria Mendez",
+    "telefono": "3225172612",
+    "email": "karolinamen25@hotmail.com",
+    "direccion": "cra 5 cll 12 -126",
+    "tipoRelacion": "Familiar",
+    "relacion": "Esposa",
+    "codeResponse": 201
+},
+{
+    "nombre": "Luis Perez",
+    "telefono": "3215789461",
+    "email": "luis.perez125@gmail.com",
+    "direccion": "cra 14 cll 25 -12",
+    "tipoRelacion": "Social",
+    "relacion": "Amigo",
+    "codeResponse": 300
+},
+{
+    "nombre": "Isaura Hernandez",
+    "telefono": "3112536987",
+    "email": "isa.hernandez14@gmail.com",
+    "direccion": "cll 25 14-12",
+    "tipoRelacion": "Comercial",
+    "relacion": "Tienda",
+    "codeResponse": 404
+}
+]
