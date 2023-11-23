@@ -15,7 +15,7 @@
     "direccion": "cra 5 cll 12 -126",
     "tipoRelacion": "Familiar",
     "relacion": "Esposa",
-    "codeResponse": 201
+    "codeResponse": 200
 },
 {
     "nombre": "Luis Perez",
@@ -24,7 +24,7 @@
     "direccion": "cra 14 cll 25 -12",
     "tipoRelacion": "Social",
     "relacion": "Amigo",
-    "codeResponse": 300
+    "codeResponse": 200
 },
 {
     "nombre": "Isaura Hernandez",
@@ -33,6 +33,6 @@
     "direccion": "cll 25 14-12",
     "tipoRelacion": "Comercial",
     "relacion": "Tienda",
-    "codeResponse": 404
+    "codeResponse": 200
 }
 ]
